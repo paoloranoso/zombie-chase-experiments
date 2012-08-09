@@ -1,0 +1,46 @@
+# git ignore template from: http://cocoaheads.tumblr.com/post/1350304132/gitignore-template-for-xcode3-4
+
+
+
+# Unity3D .gitignore file.
+#	 Store this file at the root of your local repository.
+.DS_Store
+Library/AssetImportState
+Library/AssetServerCacheV3
+Library/FailedAssetImports.txt
+Library/ScriptAssemblies
+Library/ScriptMapper
+Library/assetDatabase3
+Library/cache
+Library/expandedItems
+Library/metadata
+Library/previews
+Library/guidmapper
+Temp
+*.csproj
+*.pidb
+*.sln
+build/
+
+
+# Other useful stuff from paolo xcode .gitignore file that are relevant here
+
+# build products
+*.[oa]
+
+# Other source repository archive directories (protects when importing)
+.hg
+.svn
+CVS
+
+# automatic backup files
+*~.nib
+*.swp
+*~
+*(Autosaved).rtfd/
+Backup[ ]of[ ]*.pages/
+Backup[ ]of[ ]*.key/
+Backup[ ]of[ ]*.numbers/
+
+_*
+
