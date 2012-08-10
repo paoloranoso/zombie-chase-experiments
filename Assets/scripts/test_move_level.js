@@ -15,7 +15,7 @@ function Update () {
 	translation *= Time.deltaTime;
 	///rotation *= Time.deltaTime;
 
-	_transform.Translate (0, 0, translation);
+	_transform.Translate (0, 0, -translation);
 
 
 
