@@ -20,9 +20,9 @@ function Update () {
 
 
 	if (Input.GetButtonUp("Jump")){
-		//_transform.Rotate (0, -90, 0);
-		var cameraGO : GameObject = GameObject.Find("Main Camera");
-		cameraGO.transform.Rotate(Vector3(0,90,0) );
+		_transform.Rotate(Vector3(0,90,0), Space.World );
+		//var cameraGO : GameObject = GameObject.Find("Main Camera");
+		//cameraGO.transform.Rotate(Vector3(0,90,0) );
 	}
 
 }
