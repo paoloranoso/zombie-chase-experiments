@@ -34,22 +34,22 @@ ModelImporter:
     - name: zombierun
       firstFrame: 0
       lastFrame: 30
-      wrapMode: 0
+      wrapMode: 2
       loop: 1
     - name: zombiehurt
       firstFrame: 30
       lastFrame: 70
-      wrapMode: 0
+      wrapMode: 1
       loop: 0
     - name: zombieeat
       firstFrame: 70
       lastFrame: 200
-      wrapMode: 0
+      wrapMode: 2
       loop: 1
     - name: zombiekeepeating
       firstFrame: 150
       lastFrame: 200
-      wrapMode: 0
+      wrapMode: 2
       loop: 1
   meshes:
     lODScreenPercentages: []

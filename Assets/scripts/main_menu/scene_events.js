@@ -2,6 +2,8 @@
 
 var logoBillboard : GameObject;
 var lamp : GameObject;
+var characters : GameObject;
+
 var carCrashSound : AudioClip;
 var billboardFallSound : AudioClip;
 
@@ -14,14 +16,19 @@ function OnTriggerEnter(other : Collider){
 }
 
 function DropDownBillBoard(){
-	//drop the billboard by adding a rigid body to it
+	//car crashes first
 	AudioSource.PlayClipAtPoint(carCrashSound, transform.position);
 	yield WaitForSeconds(1);
 
+	//billboard and lamp start falling
 	logoBillboard.AddComponent('Rigidbody');
 	lamp.AddComponent('Rigidbody');
 
+	//billboard falls and plays sound
 	yield WaitForSeconds(0.5);
 	AudioSource.PlayClipAtPoint(billboardFallSound, logoBillboard.transform.position);
 
+	//hero runs across screen being chased by zombie herd
+	yield WaitForSeconds(2);
+	characters.SetActiveRecursively(true);
 }

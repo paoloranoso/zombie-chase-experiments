@@ -34,22 +34,22 @@ ModelImporter:
     - name: run
       firstFrame: 0
       lastFrame: 20
-      wrapMode: 0
+      wrapMode: 2
       loop: 1
     - name: shoot
       firstFrame: 20
       lastFrame: 40
-      wrapMode: 0
+      wrapMode: 1
       loop: 0
     - name: jump
       firstFrame: 40
       lastFrame: 60
-      wrapMode: 0
+      wrapMode: 1
       loop: 0
     - name: die
       firstFrame: 60
       lastFrame: 200
-      wrapMode: 0
+      wrapMode: 1
       loop: 0
   meshes:
     lODScreenPercentages: []
