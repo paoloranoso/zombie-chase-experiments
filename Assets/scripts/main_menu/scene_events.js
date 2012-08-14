@@ -29,6 +29,6 @@ function DropDownBillBoard(){
 	AudioSource.PlayClipAtPoint(billboardFallSound, logoBillboard.transform.position);
 
 	//hero runs across screen being chased by zombie herd
-	yield WaitForSeconds(2);
+	yield WaitForSeconds(1);
 	characters.SetActiveRecursively(true);
 }
