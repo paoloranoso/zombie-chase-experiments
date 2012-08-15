@@ -2,8 +2,14 @@
 
 var theTrigger : GameObject;
 
+private var _gameObject : GameObject;
+
+function Awake(){
+	_gameObject = gameObject;
+}
+
 function OnTriggerEnter(other : Collider) {
 	if ( other.gameObject == theTrigger ){
-		gameObject.SetActiveRecursively(false);
+		_gameObject.SetActiveRecursively(false);
 	}
 }

@@ -3,6 +3,7 @@
 var logoBillboard : GameObject;
 var lamp : GameObject;
 var characters : GameObject;
+var menuButtons : GameObject;
 
 var carCrashSound : AudioClip;
 var billboardFallSound : AudioClip;
@@ -12,10 +13,10 @@ function OnTriggerEnter(other : Collider){
 	Destroy(GetComponent('Rigidbody'));
 	Destroy(other.gameObject);
 
-	DropDownBillBoard();
+	PerformOtherSceneEvents();
 }
 
-function DropDownBillBoard(){
+function PerformOtherSceneEvents(){
 	//car crashes first
 	AudioSource.PlayClipAtPoint(carCrashSound, transform.position);
 	yield WaitForSeconds(1);
@@ -27,6 +28,12 @@ function DropDownBillBoard(){
 	//billboard falls and plays sound
 	yield WaitForSeconds(0.5);
 	AudioSource.PlayClipAtPoint(billboardFallSound, logoBillboard.transform.position);
+
+
+	//show menu buttons
+	yield WaitForSeconds(1.5);
+	menuButtons.SetActiveRecursively(true);
+
 
 	//hero runs across screen being chased by zombie herd
 	yield WaitForSeconds(1);
