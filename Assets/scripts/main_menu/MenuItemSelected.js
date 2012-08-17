@@ -26,7 +26,7 @@ function Selected(){
 
 	switch (_gameObject.tag){
 		case 'play':
-			Application.LoadLevelAsync('test_scene1');
+			Application.LoadLevelAsync('level_scene');
 			break;
 		case 'objectives':
 			Application.LoadLevelAsync('loading_scene');
