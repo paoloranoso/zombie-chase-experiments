@@ -23,7 +23,6 @@ public class HeroInput : MonoBehaviour {
 			StartCoroutine( ProcessKeyboardInput() );
 		}
 
-		// TODO: start coroutine that checks if game is paused or not
 	}
 
 	public SwipeInput GetSwipeInput(){
@@ -32,6 +31,8 @@ public class HeroInput : MonoBehaviour {
 
 	private IEnumerator ProcessKeyboardInput(){
 		while (true){
+
+			_swipeInput = SwipeInput.Nothing;
 
 			if ( !LevelData.gamePaused ){
 				// Keyboard input
@@ -52,12 +53,16 @@ public class HeroInput : MonoBehaviour {
 				}
 			}
 
+			Debug.Log("Swiped!");
+
 			yield return null;
 		}
 	}
 
 	private IEnumerator ProcessMobileInput() {
 		while (true){
+
+			_swipeInput = SwipeInput.Nothing;
 
 		    if (Input.touchCount == 1) {
 		        _touch = Input.touches[0];
