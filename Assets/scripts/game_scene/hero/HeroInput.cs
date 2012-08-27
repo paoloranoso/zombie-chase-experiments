@@ -53,8 +53,6 @@ public class HeroInput : MonoBehaviour {
 				}
 			}
 
-			Debug.Log("Swiped!");
-
 			yield return null;
 		}
 	}
