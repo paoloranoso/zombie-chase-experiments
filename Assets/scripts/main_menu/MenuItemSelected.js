@@ -29,10 +29,10 @@ function Selected(){
 			Application.LoadLevelAsync('game_scene');
 			break;
 		case 'objectives':
-			Application.LoadLevelAsync('loading_scene');
+			Application.LoadLevelAsync('game_scene');
 			break;
 		case 'store':
-			Application.LoadLevelAsync('test_scene1');
+			Application.LoadLevelAsync('game_scene');
 			break;
 		default: break;
 	}
