@@ -16,7 +16,18 @@ public class LevelPieceRecycler : MonoBehaviour {
 
 		Debug.Log("Selected random index:" + randomIndex);
 
+
+		for (int i = 0; i < levelPieces.Length-1; i++){
+			if ( (i == _lastPieceUsedIndex) || (i == randomIndex) ){
+				continue;
+			}
+
+			levelPieces[i].SetActiveRecursively(false);
+		}
+
 		_lastPieceUsedIndex = randomIndex;
+
+		levelPieces[randomIndex].SetActiveRecursively(true);
 
 		return levelPieces[randomIndex];
 	}
