@@ -318,4 +318,17 @@ public class HeroAction : MonoBehaviour {
 
 */
 
+	void OnTriggerEnter(Collider other){
+		if (other.gameObject.name == "turnTrigger"){
+			Debug.Log("ENTERED TURN TRIGGER");
+		}
+	}
+
+	void OnTriggerExit(Collider other){
+		if (other.gameObject.name == "turnTrigger"){
+			Debug.Log("EXITED TURN TRIGGER");
+		}
+	}
+
+
 }
