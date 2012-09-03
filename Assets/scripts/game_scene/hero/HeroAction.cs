@@ -21,6 +21,7 @@ public class HeroAction : MonoBehaviour {
 	private bool _isShooting = false;
 
 	private bool _isInTurnTriggerArea = false;
+	private bool _isInTurnTriggerActionArea = false;
 
 	private float _tiltSpeed = 0.0f;
 	private float _verticalSpeed = 0.0f;
@@ -77,10 +78,10 @@ public class HeroAction : MonoBehaviour {
 				case SwipeInput.Nothing:
 					break;
 				case SwipeInput.SwipedLeft:
-					CheckIfWillTurn(TurnDirections.Left);
+					TurnHero(TurnDirections.Left);
 					break;
 				case SwipeInput.SwipedRight:
-					CheckIfWillTurn(TurnDirections.Right);
+					TurnHero(TurnDirections.Right);
 					break;
 				case SwipeInput.SwipedUp:
 					Jump();
@@ -159,9 +160,15 @@ public class HeroAction : MonoBehaviour {
 	}
 
 
-	private void CheckIfWillTurn(TurnDirections direction){
-		if ( _isInTurnTriggerArea ){
+	private void TurnHero(TurnDirections direction){
+		// queue them to turn once they hit the turnTrigger, but if they are already in it, turn them right away
+		if ( _isInTurnTriggerArea && ! _isInTurnTriggerActionArea){
 			_willTurnDirection = direction;
+			_isInTurnTriggerArea = false;
+		}else if (_isInTurnTriggerArea && _isInTurnTriggerActionArea){
+			float directionToTurn = (float)direction;
+			_moveDirection = Quaternion.Euler(0, directionToTurn, 0) * _moveDirection;
+			_willTurnDirection = TurnDirections.Nothing;
 			_isInTurnTriggerArea = false;
 		}
 	}
@@ -328,6 +335,8 @@ public class HeroAction : MonoBehaviour {
 		if (other.gameObject.name == "turnAreaTrigger"){
 			_isInTurnTriggerArea = true;
 		}else if (other.gameObject.name == "turnTrigger"){
+			_isInTurnTriggerActionArea = true;
+
 			//turn the hero
 			float directionToTurn = (float)_willTurnDirection;
 			_moveDirection = Quaternion.Euler(0, directionToTurn, 0) * _moveDirection;
@@ -338,6 +347,8 @@ public class HeroAction : MonoBehaviour {
 	void OnTriggerExit(Collider other){
 		if (other.gameObject.name == "turnAreaTrigger"){
 			_isInTurnTriggerArea = false;
+		}else if (other.gameObject.name == "turnTrigger"){
+			_isInTurnTriggerActionArea = false;
 		}
 	}
 
