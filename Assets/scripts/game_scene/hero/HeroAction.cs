@@ -19,6 +19,8 @@ public class HeroAction : MonoBehaviour {
 	private bool _isDead = false;
 	private bool _isShooting = false;
 
+	private bool _isInTurnTriggerArea = false;
+
 	private float _tiltSpeed = 0.0f;
 	private float _verticalSpeed = 0.0f;
 	private bool _isGrounded = true;
@@ -157,8 +159,11 @@ public class HeroAction : MonoBehaviour {
 
 
 	private void TurnHero(TurnDirections direction){
-		float directionToTurn = (float)direction;
-		_moveDirection = Quaternion.Euler(0, directionToTurn, 0) * _moveDirection;
+		if ( _isInTurnTriggerArea ){
+			float directionToTurn = (float)direction;
+			_moveDirection = Quaternion.Euler(0, directionToTurn, 0) * _moveDirection;
+			_isInTurnTriggerArea = false;
+		}
 	}
 
 
@@ -320,13 +325,13 @@ public class HeroAction : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other){
 		if (other.gameObject.name == "turnTrigger"){
-			Debug.Log("ENTERED TURN TRIGGER");
+			_isInTurnTriggerArea = true;
 		}
 	}
 
 	void OnTriggerExit(Collider other){
 		if (other.gameObject.name == "turnTrigger"){
-			Debug.Log("EXITED TURN TRIGGER");
+			_isInTurnTriggerArea = false;
 		}
 	}
 
