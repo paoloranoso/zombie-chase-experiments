@@ -353,4 +353,13 @@ public class HeroAction : MonoBehaviour {
 	}
 
 
+
+	void OnCollisionEnter(Collision collision){
+		Debug.Log("Collided with " + collision.gameObject.name);
+	}
+
+
+
+
+
 }
