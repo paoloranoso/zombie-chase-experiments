@@ -14,6 +14,7 @@ public class HeroAction : MonoBehaviour {
 
 	private Vector3 _moveDirection = Vector3.zero;
 	private Vector3 _tiltDirection = Vector3.zero;
+	private TurnDirections _willTurnDirection = TurnDirections.Nothing;
 
 	private bool _isInvincible = false;
 	private bool _isDead = false;
@@ -76,10 +77,10 @@ public class HeroAction : MonoBehaviour {
 				case SwipeInput.Nothing:
 					break;
 				case SwipeInput.SwipedLeft:
-					TurnHero(TurnDirections.Left);
+					CheckIfWillTurn(TurnDirections.Left);
 					break;
 				case SwipeInput.SwipedRight:
-					TurnHero(TurnDirections.Right);
+					CheckIfWillTurn(TurnDirections.Right);
 					break;
 				case SwipeInput.SwipedUp:
 					Jump();
@@ -158,13 +159,13 @@ public class HeroAction : MonoBehaviour {
 	}
 
 
-	private void TurnHero(TurnDirections direction){
+	private void CheckIfWillTurn(TurnDirections direction){
 		if ( _isInTurnTriggerArea ){
-			float directionToTurn = (float)direction;
-			_moveDirection = Quaternion.Euler(0, directionToTurn, 0) * _moveDirection;
+			_willTurnDirection = direction;
 			_isInTurnTriggerArea = false;
 		}
 	}
+
 
 
 	private void Jump(){
@@ -324,13 +325,18 @@ public class HeroAction : MonoBehaviour {
 */
 
 	void OnTriggerEnter(Collider other){
-		if (other.gameObject.name == "turnTrigger"){
+		if (other.gameObject.name == "turnAreaTrigger"){
 			_isInTurnTriggerArea = true;
+		}else if (other.gameObject.name == "turnTrigger"){
+			//turn the hero
+			float directionToTurn = (float)_willTurnDirection;
+			_moveDirection = Quaternion.Euler(0, directionToTurn, 0) * _moveDirection;
+			_willTurnDirection = TurnDirections.Nothing;
 		}
 	}
 
 	void OnTriggerExit(Collider other){
-		if (other.gameObject.name == "turnTrigger"){
+		if (other.gameObject.name == "turnAreaTrigger"){
 			_isInTurnTriggerArea = false;
 		}
 	}
