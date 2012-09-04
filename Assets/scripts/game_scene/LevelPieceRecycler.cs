@@ -17,7 +17,7 @@ public class LevelPieceRecycler : MonoBehaviour {
 		//Debug.Log("Selected random index:" + randomIndex);
 
 
-		for (int i = 0; i < levelPieces.Length-1; i++){
+		for (int i = 0; i < levelPieces.Length; i++){
 			if ( (i == _lastPieceUsedIndex) || (i == randomIndex) ){
 				continue;
 			}
