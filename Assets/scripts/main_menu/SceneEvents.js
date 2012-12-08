@@ -32,10 +32,10 @@ function PerformOtherSceneEvents(){
 
 	//show menu buttons
 	yield WaitForSeconds(1.5);
-	menuButtons.SetActive(true);
+	menuButtons.SetActiveRecursively(true);
 
 
 	//hero runs across screen being chased by zombie herd
 	yield WaitForSeconds(1);
-	characters.SetActive(true);
+	characters.SetActiveRecursively(true);
 }

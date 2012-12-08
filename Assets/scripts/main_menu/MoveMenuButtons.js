@@ -7,5 +7,5 @@ function Awake(){
 }
 
 function Start () {
-	iTween.MoveBy(_gameObject, Vector3(-1, 0, 0), 1.0);
+	iTween.MoveBy(_gameObject, Vector3(-1.2, 0, 0), 1.0);
 }

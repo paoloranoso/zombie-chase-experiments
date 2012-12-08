@@ -22,14 +22,11 @@ public class LevelPieceRecycler : MonoBehaviour {
 				continue;
 			}
 
-			//levelPieces[i].transform.position = new Vector3(100.0f, 0,0;
 			GameObject levelPiece = levelPieces[i];
 			levelPiece.transform.position = new Vector3(100.0f, 100.0f,100.0f);
 		}
 
 		_lastPieceUsedIndex = randomIndex;
-
-		//levelPieces[randomIndex].SetActive(true);
 
 		return levelPieces[randomIndex];
 	}
