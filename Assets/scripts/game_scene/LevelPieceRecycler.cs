@@ -27,13 +27,13 @@ public class LevelPieceRecycler : MonoBehaviour {
 
 
 			//TODO: instead of turning off/back on (since it causes a spike), perhaps we can just move to a transform far away and above or below the camera
-			levelPieces[i].SetActiveRecursively(false);
+			levelPieces[i].SetActive(false);
 		}
 
 		_lastPieceUsedIndex = randomIndex;
 
 		//TODO: instead of turning off/back on (since it causes a spike), perhaps we can just move to a transform far away and above or below the camera
-		levelPieces[randomIndex].SetActiveRecursively(true);
+		levelPieces[randomIndex].SetActive(true);
 
 		return levelPieces[randomIndex];
 	}

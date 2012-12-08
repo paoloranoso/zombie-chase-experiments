@@ -10,6 +10,6 @@ function Awake(){
 
 function OnTriggerEnter(other : Collider) {
 	if ( other.gameObject == theTrigger ){
-		_gameObject.SetActiveRecursively(false);
+		_gameObject.SetActive(false);
 	}
 }
